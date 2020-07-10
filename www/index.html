@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="sketch.js"></script>
+  
+  <script>
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+
+      if(page.matches('#first-page')){
+        page.querySelector('#first1-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('annai.html');
+        };
+        page.querySelector('#first2-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('gakka.html');
+        };
+        page.querySelector('#first3-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('bukatsu.html');
+        };
+        page.querySelector('#first4-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('ryou.html');
+        };
+        page.querySelector('#first5-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('akusesu.html');
+        };
+        page.querySelector('#first6-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('messe.html');
+        };
+      }
+
+      if(page.matches('#annai-page')){
+        page.querySelector('#admission-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('admission.html');
+        };
+       page.querySelector('#gyouji-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('gyouji.html');
+        };
+      }
+
+      if(page.matches('#ryou-page')){
+        page.querySelector('#shisetsu-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('shisetsu.html');
+        };
+       page.querySelector('#nikka-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('nikka.html');
+        };
+      }
+
+      if(page.matches('#akusesu-page')){
+        page.querySelector('#mappu-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('mappu.html');
+        };
+       page.querySelector('#fune-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('fune.html');
+        };
+      }  
+    });
+
+    if (ons.platform.isIPhoneX()) {
+      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+    }
+  </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="page1.html"></ons-navigator>
+
+  <ons-template id="page1.html">
+    <ons-page id="first-page">
+      <ons-toolbar>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <img src ="https://www.pp3dp.jp/wp/wp-content/uploads/2018/11/v13-3.jpg"width="100%"height="50%">
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="first1-button"style="width:47%;"><big><big>学校案内</big></big></ons-button>
+        <ons-button large--quiet id="first2-button"style="width:47%;"><big><big>学科</big></big></ons-button></div>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="first3-button"style="width:47%;"><big><big>部活</big></big></ons-button>
+        <ons-button large--quiet id="first4-button"style="width:47%;"><big><big>寮</big></big></ons-button></div>
+        <p class="sample"></p>         
+        <div><ons-button large--quiet id="first5-button"style="width:47%;"><big><big>アクセス</big></big></ons-button>
+        <ons-button large--quiet id="first6-button"style="width:47%;">中学生へメッセージ</ons-button></div>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="annai.html">
+    <ons-page id="annai-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <img src ="https://i.ytimg.com/vi/BbrQNjAhVCQ/maxresdefault.jpg"width="100%"height="50%">
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="admission-button"style="width:80%;"><big><big>アドミッションポリシー</big></big></ons-button>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="gyouji-button"style="width:80%;"><big><big>学校行事</big></big></ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="admission.html">
+    <ons-page id="admission-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>学校案内</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <big><big><u>求める学生像及び入学者選抜の<br>基本方針</u></big></big>
+        <p class="sample"></p>
+        <p><big><div align="left">→学校で学習した基礎学力が身についている人<br>
+        <p class="sample"></p>
+        →学校の行事、生徒会や部活動に努力した人<br>
+        <p class="sample"></p>
+        →自ら考え、工夫し行動できる人<br>
+        <p class="sample"></p>
+        →将来、社会で活躍したいという夢がある人</div></big></p>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="gyouji.html">
+    <ons-page id="gyouji-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>学校案内</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <p><big><div align="left">
+        4月&emsp;前期始業式、入学式、<br>&emsp;&emsp;&nbsp;新入生オリエンテーション<br>
+        5月&emsp;学生総会、前期中間試験<br>
+        6月&emsp;弓削商船高専との定期戦、<br>&emsp;&emsp;&nbsp;前期クラスマッチ<br>
+        7月&emsp;中国地区高専体育大会、<br>&emsp;&emsp;&nbsp;全国高専漕艇大会、前期末試験<br>
+        8月&emsp;前期終業式、オープンスクール、<br>&emsp;&emsp;&nbsp;全国高専体育大会<br>
+        9月&emsp;卒業式(商船学科)、後期始業式<br>
+        10月&nbsp;&nbsp;プログラミングコンテスト、<br>&emsp;&emsp;&nbsp;商船祭・オープンスクール、<br>&emsp;&emsp;&nbsp;中国地区ロボットコンテスト、<br>&emsp;&emsp;&nbsp;後期クラスマッチ<br>
+        11月&nbsp;&nbsp;中国地区高専体育大会(冬季)、<br>&emsp;&emsp;&nbsp;後期中間試験<br>
+        12月&nbsp;&nbsp;スポーツリーダーズセミナー<br>
+        1月&emsp;入学試験(推薦)、学年末試験<br>
+        2月&emsp;卒業研究発表会、後期終業式<br>
+        3月&emsp;卒業式(電子制御・流通情報)<br>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="gakka.html">
+    <ons-page id="gakka-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <big><big><u> <流通情報工学科> </u></big></big>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="bukatsu.html">
+    <ons-page id="bukatsu-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <big><big><u> <運動部 </u></big></big>
+        <p>・野球部</p>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="ryou.html">
+    <ons-page id="ryou-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <img src ="https://i.ytimg.com/vi/BbrQNjAhVCQ/maxresdefault.jpg"width="100%"height="50%">
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="shisetsu-button"style="width:80%;"><big><big>寮施設</big></big></ons-button>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="nikka-button"style="width:80%;"><big><big>日課</big></big></ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="shisetsu.html">
+    <ons-page id="shisetsu-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>寮</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <big><big><u> <若潮寮> </u></big></big>
+        <p>・男子部屋</p>
+        <p class="sample"></p>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="nikka.html">
+    <ons-page id="nikka-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>寮</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <p> 7:20 起床点呼
+        </p>
+        <p class="sample"></p>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="akusesu.html">
+    <ons-page id="akusesu-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <img src ="https://i.ytimg.com/vi/BbrQNjAhVCQ/maxresdefault.jpg"width="100%"height="50%">
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="mappu-button"style="width:80%;"><big><big>マップ</big></big></ons-button>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="fune-button"style="width:80%;"><big><big>フェリーの時刻表</big></big></ons-button>
+        <p class="sample"></p>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="mappu.html">
+    <ons-page id="mappu-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>アクセス</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <p> マップ作る
+        </p>
+        <p class="sample"></p>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="fune.html">
+    <ons-page id="fune-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>アクセス</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <p> フェリーの時刻表
+        </p>
+        <p class="sample"></p>
+         </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="messe.html">
+    <ons-page id="messe-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HP</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <p> メッセージを書く
+        </p>
+        <p class="sample"></p>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
+</body>
+</html>
