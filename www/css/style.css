@@ -3,3 +3,48 @@
   padding-bottom: 0.3em;
   line-height: 0.5;
 }
+
+/**文字マーカー**/
+.marker_line60 { background:linear-gradient(transparent 60%, #faf611 0%); }
+.marker_line20 { background:linear-gradient(transparent 20%, #faf611 0%); }
+.marker2_line60 { background:linear-gradient(transparent 60%, #11fa85 0%); }
+.marker2_line20 { background:linear-gradient(transparent 20%, #11fa85 0%); }
+.marker3_line60 { background:linear-gradient(transparent 60%, #cd74e9 0%); }
+.marker3_line20 { background:linear-gradient(transparent 20%, #cd74e9 0%); }
+
+/** ボタン **/
+.disp-box label {
+    display: inline-block;
+    color: #332c10;                   /* ボタンの文字色 */
+    background-color: #4fdcff;        /* ボタンの背景色 */
+    font-weight: bold;                /* 文字の太さ */
+    padding: 0.5em 1em;               /* ボタン内側の余白 */
+    border-bottom: solid 4px #148594; /* ボタンの影部分 */
+    border-radius: 3px;               /* 角丸 */
+    cursor: pointer;                  /* ボタンにカーソルを合わせた時に指アイコンを表示 */
+}
+/** ボタンクリック時のボタンを押し込む動作 **/
+.disp-box label:active {
+    -webkit-transform: translateY(4px); /* Chrome、Safari用 */
+    -moz-transform: translateY(4px);    /* Firefox用 */
+    -ms-transform: translateY(4px);     /* IE用 */
+    transform: translateY(4px);
+    border-bottom: none;
+}
+/** チェックボックス **/
+.disp-box input {
+    display: none; /* 非表示 */
+}
+/** 表示・非表示を切り替えるテキスト（「クリックされました！」の部分） **/
+.disp-box .text {
+    color: #332c10;    /* 文字色 */
+    font-weight: bold; /* 文字の太さ */
+    overflow: hidden;
+    opacity: 0;        /* 文字を非表示 */
+    transition: 0.2s;  /* 文字が表示・非表示される時のスピード */
+}
+/** チェックボックスにチェックが入った時の、テキストの処理 **/
+.disp-box input:checked ~ .text {
+    height: auto;
+    opacity: 1; /* 文字を表示 */
+}

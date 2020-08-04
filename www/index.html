@@ -38,7 +38,7 @@
         mapelem.style.width = content.clientWidth.toString() + "px";
         mapelem.style.height = content.clientHeight.toString() + "px";
 
-        var MyLatLng = new google.maps.LatLng(34.253686,132.904353);
+        var MyLatLng = new google.maps.LatLng(34.253606,132.904348);
         var Options = {
           zoom: 15,   //地図の縮尺図
           center: MyLatLng,   //地図の中心座標
@@ -54,6 +54,12 @@
         content: "広島商船高等専門学校"
       });
       myInfoWindow.open(map,Mymarker1);
+     // 吹き出しが閉じられたら、マーカークリックで再び開くようにしておく
+      google.maps.event.addListener(myInfoWindow, "closeclick", function() {
+       google.maps.event.addListenerOnce(Mymarker1, "click", function(event) {
+       myInfoWindow.open(map, Mymarker1);
+       });
+     });
 
       var ryou = new google.maps.LatLng(34.259176,132.908419);
       var Mymarker2 = new google.maps.Marker({
@@ -64,7 +70,12 @@
         content: "広島商船高等専門学校 学寮寮事務"
       });
       myInfoWindow2.open(map,Mymarker2);
-
+      // 吹き出しが閉じられたら、マーカークリックで再び開くようにしておく
+      google.maps.event.addListener(myInfoWindow2, "closeclick", function() {
+       google.maps.event.addListenerOnce(Mymarker2, "click", function(event) {
+       myInfoWindow2.open(map, Mymarker2);
+       });
+      });
       }
 });
   </script>
@@ -102,6 +113,9 @@
        page.querySelector('#gyouji-button').onclick = function() {
           document.querySelector('#navigator').pushPage('gyouji.html');
         };
+        page.querySelector('#hiromaru-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('hiromaru.html');
+        };
       }
 
       if(page.matches('#ryou-page')){
@@ -110,6 +124,9 @@
         };
        page.querySelector('#nikka-button').onclick = function() {
           document.querySelector('#navigator').pushPage('nikka.html');
+        };
+      page.querySelector('#situmon-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('situmon.html');
         };
       }
 
@@ -162,12 +179,13 @@
 
       <div class="content" style="text-align: center;">
         <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
-        <p class="sample"></p>
         <img src ="https://i.ytimg.com/vi/BbrQNjAhVCQ/maxresdefault.jpg"width="100%"height="50%">
         <p class="sample"></p>
         <ons-button large--quiet id="admission-button"style="width:80%;"><big><big>アドミッションポリシー</big></big></ons-button>
         <p class="sample"></p>
         <div><ons-button large--quiet id="gyouji-button"style="width:80%;"><big><big>学校行事</big></big></ons-button></div>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="hiromaru-button"style="width:80%;"><big><big>広島丸</big></big></ons-button></div>
       </div>
     </ons-page>
   </ons-template>
@@ -221,6 +239,32 @@
     </ons-page>
   </ons-template>
 
+<ons-template id="hiromaru.html">
+    <ons-page id="hiromaru-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>学校案内</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center;">
+        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <img src ="http://www.hiroshima-cmt.ac.jp/facility/img/sho-31.jpg"width="100%"height="40%">
+        <p class="sample"></p>
+        練習船広島丸は、商船学科学生の航海実習・実験実習及び学術研究（教員・企業・大学などの研究機関との共同研究）に使われています。　また、地域への貢献、次世代の青少年に海や船への関心を持ってもらうために、広島丸を活用した公開講座や主に瀬戸内海の各地で、海上教室・体験航海・一般公開を行っています。
+        <p class="sample"></p>
+        →1.教育への利用<br>
+          商船学科学生は、船内で宿泊しながら、西は山口・九州方面（別府・下関・門司等）、東は関西方面（大阪・神戸・高松等）と、穏やかな瀬戸内海の恵まれた環境を実習のフィールドとして、船員としての技術・資質を高める航海実習を行っています。<br>
+       ----------------------------------------------------<br>
+        →2.研究への利用<br>
+          超音波多層流向流速計（ADCP）他、水温・塩分・深度計(STD)などの海洋観測機器を備えていますので、海洋観測・船体運動・燃焼効率向上などの研究に使われています。 計測データは、船内のデータ処理装置で収集することができます。<br>
+       --------------------------------------------------<br>
+        →3.地域貢献への利用<br>
+         公開講座・体験航海・海上教室を小・中学生及び一般市民対象に実施しています。 また、近隣の小・中学校からの要請で海洋環境教室と組み合わせたイベントを行っています。<br>
+      --------------------------------------------------<br>
+
+      </div>
+    </ons-page>
+  </ons-template>
+
   <ons-template id="gakka.html">
     <ons-page id="gakka-page">
       <ons-toolbar>
@@ -259,72 +303,72 @@
       <div class="content" style="text-align: center;">
        <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
         <p class="sample"></p>
-        <p><big><big><u> <運動部> </u></big></big><br></p>
-        <p><big>・野球部</big><br></p>
-        <p>自主・研鑽をモットーに、自分たちで考えて試合をする「野球が好きな選手達」の集まりです。3年生の選手権大会で高校野球を卒業後は、「もっと野球が好きな選手達」が集まり、5年生の高専大会まで野球を楽しんでいます。<br></p>
+        <strong class="marker_line20"><big><big><u> <運動部> </u></big></big></strong><br>
+        <strong class="marker_line60"><big>・野球部</big></strong>
+        <p>自主・研鑽をモットーに、自分たちで考えて試合をする「野球が好きな選手達」の集まりです。3年生の選手権大会で高校野球を卒業後は、「もっと野球が好きな選手達」が集まり、5年生の高専大会まで野球を楽しんでいます。<br>
         <p class="sample"></p>
-        <p><big>・サッカー部</big><br></p>
+        <strong class="marker_line60"><big>・サッカー部</big></strong>
         <p>部員３０名。目標は久々の高専全国大会出場そして初戦突破。近くの高専や高校と試合しています。竹原サッカーリーグに加盟しています。<br></p>
         <p class="sample"></p>
-        <p><big>・卓球部</big><br></p>
+        <strong class="marker_line60"><big>・卓球部</big></strong>
         <p>卓球部は高体連・日学連・高専関係・一般の大会等かなり多くの大会に参加しています。和気あいあいとしたクラブの雰囲気の中、"試合に勝つ"を目標に頑張っています。<br></p>
         <p class="sample"></p>
-        <p><big>・男子バスケットボール部</big><br></p>
+        <strong class="marker_line60"><big>・男子バスケットボール部</big></strong>
         <p>男子バスケ部は40名程度で、出場する試合によって１～３年生チームと、４～５年生中心チームに分かれますが、普段は学年に関係なく楽しく練習しています。<br></p>
         <p class="sample"></p>
-        <p><big>・女子バスケットボール部</big><br></p>
+        <strong class="marker_line60"><big>・女子バスケットボール部</big></strong>
         <p>こんにちは。女子バスケ部です。私たちは10名ほどで活動しています。少人数ですが、都合をやりくりして練習しています。初心者の方大歓迎です。<br></p>
         <p class="sample"></p>
-        <p><big>・バレーボール部</big><br></p>
+        <strong class="marker_line60"><big>・バレーボール部</big></strong>
         <p>練習は週４日ですが、限られた練習時間で１つでも多くの勝利を目標に頑張っています。未経験者もたくさんいますが、みんなで教え合って上達しています。男女ともに部員の仲が良いのがチームの特徴です。部員はみんな元気で明るく、とても活力に満ちた部活動です。<br></p>
         <p class="sample"></p>
-        <p><big>・陸上部</big><br></p>
+        <strong class="marker_line60"><big>・陸上部</big></strong>
         <p>本校に入学して初めて競技を始めた者からある程度実績や経験を積んでいる者まで、それぞれの目標に向けて日々練習に取り組んでいます。<br></p>
         <p class="sample"></p>
-        <p><big>・漕艇部</big><br></p>
+        <strong class="marker_line60"><big>・漕艇部</big></strong>
         <p>私たち漕艇部は全国大会優勝を目標とし、部員一丸となって頑張っています。また、瀬戸内海という恵まれた環境で、季節を肌に感じながら仲間と共に成長できる海のスポーツです。<br></p>
         <p class="sample"></p>
-        <p><big>・柔道部</big><br></p>
+        <strong class="marker_line60"><big>・柔道部</big></strong>
         <p>高等学校体育連盟並びに高等専門学校体育連盟主催の試合(インターハイ関連、高専大会)に加え、全日本柔道連盟・呉地区柔道連盟に加盟し毎月実施される昇段試合・月次試合にも参加し、柔道の技と精神の鍛錬に励んでいます。<br></p>
         <p class="sample"></p>
-        <p><big>・水泳部</big><br></p>
+        <strong class="marker_line60"><big>・水泳部</big></strong>
         <p>部員数は約２０名（女子３名含む。）です。学校のプールが利用可能な夏季を中心に練習に励んでいます。冬季は陸上トレーニングです。高専大会上位入賞、全国大会出場が目標です。<br></p>
         <p class="sample"></p>
-        <p><big>・剣道部</big><br></p>
+        <strong class="marker_line60"><big>・剣道部</big></strong>
         <p>剣道部は、週６日で稽古を行っています。高体連や高専の各種大会、他校への遠征、一般の大会にも参加し、技術と精神の向上に努めています。<br></p>
         <p class="sample"></p>
         <p class="sample"></p>
-        <p><big><big><u> <文化部> </u></big></big></p>
-        <p><big>・軽音部<br></big></p>
+        <strong class="marker2_line20"><big><big><u> <文化部> </u></big></big></strong><br>
+        <strong class="marker2_line60"><big>・軽音部</big></strong>
         <p>好きな音楽を好きなように演奏する本校の軽音楽部。友と奏でる青春の１ページ。商船祭で活躍すれば、君こそスターだ！<br></p>
         <p class="sample"></p>
-        <p><big>・茶道部<br></big></p>
+        <strong class="marker2_line60"><big>・茶道部</big></strong>
         <p>毎週火曜日午後８時に、若潮会館の作法室で活動しています。流派は裏千家で、和敬静寂を理想として、おもてなしのこころを勉強しています。商船祭や尾道などで開催されるお茶会に参加して、実践力を身につける機会を得ています。興味のある方は是非お越しください。初心者の方大歓迎です。<br></p>
         <p class="sample"></p>
-        <p><big>・写真部<br></big></p>
+        <strong class="marker2_line60"><big>・写真部</big></strong>
         <p>写真やカメラに興味のある学生が集まって、撮影会へ出かけて和気あいあいと気軽に写真を撮ったり、年6〜7回開催する写真展や品評会で気に入った自分の作品を展示しています。写真部の活動に興味を持った学生を歓迎します。<br></p>
         <p class="sample"></p>
         <p class="sample"></p>
-        <p><big><big><u> <同好会> </u></big></big></p>
-        <p><big>・イラスト同好会<br></big></p>
+        <strong class="marker3_line20"><big><big><u> <同好会> </u></big></big></strong><br>
+        <strong class="marker3_line60"><big>・イラスト同好会</big></strong>
         <p>イラスト同好会はその名前の通り、絵を描く同好会です。部員は現在7名程で活動しており、皆が楽しく絵を描いています。まだまだ小さな活動しかできていませんが、今後の目標としてはイラストコンクール等に参加する事などを考えています。<br></p>
         <p class="sample"></p>
-        <p><big>・ものづくり同好会<br></big></p>
+        <strong class="marker3_line60"><big>・ものづくり同好会</big></strong>
         <p>ものづくり同好会は，ストラップ，シール，教材（おもちゃ）等好きな物を自由に作る同好会です。色々なコンテストにも出場しています。<br></p>
         <p class="sample"></p>
-        <p><big>・書道会<br></big></p>
+        <strong class="marker3_line60"><big>・書道会</big></strong>
         <p>書道の技術向上だけでなく、自ら興味を持った分野に書道を通して様々な体験を行い、研究していくことで、幅広い知識を吸収することを目的としています。<br></p>
         <p class="sample"></p>
-        <p><big>・海友会<br></big></p>
+        <strong class="marker3_line60"><big>・海友会</big></strong>
         <p>海友会は、学生達が「地域社>会への貢献」を通じて地域社会への関心を高め、コミュニケーションの場を広げるため、地元NPOさんと協力した海岸清掃と障害者支援活動に参加しています。<br></p>
         <p class="sample"></p>
-        <p><big>・将棋同好会<br></big></p>
+        <strong class="marker3_line60"><big>・将棋同好会</big></strong>
         <p>将棋同好会では日々練習に励み、中国地方の大会にも参加しており、全国高専将棋大会にも出場を果たし、団体戦では、敗者トーナメントで堂々の優勝。また、個人戦では、ベスト16の成績を収めました。本年度は、さらに腕を磨き『全国高専将棋大会での入賞』を目標に頑張っていきたいと考えています。<br></p>
         <p class="sample"></p>
-        <p><big>・家庭科同好会<br></big></p>
+        <strong class="marker3_line60"><big>・家庭科同好会</big></strong>
         <p>家庭科同好会は、みんなで仲良くおしゃべりしながら料理やお菓子、手芸を楽しむ同好会です。和気あいあいとした雰囲気の中、意見を出し合って作るものを決めたり材料の無駄がないように工夫したりと、生活していく上で大切な知識を身につけることが出来ます。<br></p>
         <p class="sample"></p>
-        <p><big>・SES同好会<br></big></p>
+        <strong class="marker3_line60"><big>・SES同好会</big></strong>
         <p>SES同好会は、全国高等専門学校ロボットコンテスト（略して高専ロボコン）に出場するマシンを製作する同好会です。同好会でありながら、活動は4月から中国地区大会や全国大会が開催される12月頃までほぼ毎日のように行っています。目標は全国大会の優勝！そのために日々新しい技術の勉強や設計・製作の訓練を行っています。<br></p>
 
       </div>
@@ -339,12 +383,13 @@
       </ons-toolbar>
       <div class="content" style="text-align: center">
         <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
-        <p class="sample"></p>
         <img src ="https://cdn.pixabay.com/photo/2016/06/07/16/12/sky-1441936_960_720.jpg"width="100%"height="50%">
         <p class="sample"></p>
         <div><ons-button large--quiet id="shisetsu-button"style="width:80%;"><big><big>寮施設</big></big></ons-button></div>
         <p class="sample"></p>
         <div><ons-button large--quiet id="nikka-button"style="width:80%;"><big><big>日課</big></big></ons-button></div>
+        <p class="sample"></p>
+        <div><ons-button large--quiet id="situmon-button"style="width:80%;"><big><big>よくあるご質問</big></big></ons-button></div>
       </div>
     </ons-page>
   </ons-template>
@@ -398,6 +443,77 @@
     </ons-page>
   </ons-template>
 
+  <ons-template id="situmon.html">
+    <ons-page id="situmon-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>寮</ons-back-button></div>
+        <div class="center">学校紹介アプリ</div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center;">
+      <div align="left"><big><big><u>広島商船高等専門学校</u></big></big></div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn">寮の食事内容は？
+        </label>
+        <input type="checkbox" id="disp-btn">
+        <p class="text">委託給食業者の栄養士が献立を立てており、決まった食事を喫食します。朝食の主食はご飯とパンの選択制で、自由に選ぶことができます。ご飯は、お代わり自由です。人気メニューのアンケートでは、カレーが1位です。</p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp2-btn">寮生の食事について、昼食はどこで食べるのですか？休日は？
+        </label>
+        <input type="checkbox" id="disp2-btn">
+        <p class="text">朝食、夕食は寮の食堂で喫食します。昼食は、平日授業のある日は、学校の食堂で喫食します。（現金はその場で支払う必要はありません。）休日は3食、寮の食堂で喫食します。</p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn3">お金の管理は？ATMは？
+        </label>
+        <input type="checkbox" id="disp-btn3">
+        <p class="text">貴重品の管理は、各自で行います。居室の衣装ロッカーの引き出しに南京錠をかけることができます。<br>島内に設置してあるATMは「ゆうちょ銀行」「広島銀行」「もみじ銀行」の3行です。
+        </p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn4">自宅への帰省はできますか？
+        </label>
+        <input type="checkbox" id="disp-btn4">
+        <p class="text">休日の帰省は自由ですが「外泊届」が必要です。就職活動・通院等で平日外泊する場合は、担任の承諾（外泊届に印鑑）が必要です。また、夏季休業中、冬季休業中、春季休業中は、在寮することはできません。</p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn5">自宅から荷物を送ることができますか？
+        </label>
+        <input type="checkbox" id="disp-btn5">
+        <p class="text">寮生への郵便・宅配は、寮務係が代理で受け取ります。名前を提示するので、各自が提示版を確認し、事務室で受け取ります。</p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn6">パソコン・携帯電話の持ち込みはできますか？
+        </label>
+        <input type="checkbox" id="disp-btn6">
+        <p class="text">パソコン・携帯電話の持ち込みは許可してます。また、学内Wi-fiでインターネットに接続できますが、学内Wi-fiの使用時間は、下記の通りです。<br>
+          平日・休日とも　　9：00～22：00
+        </p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn7">部屋の1人部屋・2人部屋は希望できますか？
+        </label>
+        <input type="checkbox" id="disp-btn7">
+        <p class="text">希望はできません。入寮時は、寮務主事が決定します。後期に部屋替えします。</p>
+        </div>
+        <p class="sample"></p>
+        <div class="disp-box">
+        <label for="disp-btn8">捕食室とは、何ですか？
+        </label>
+        <input type="checkbox" id="disp-btn8">
+        <p class="text">捕食室は各階に1か所ずつあります。冷蔵庫、電子レンジ、オーブンが1台ずつ設置してあり、使用できます。</p>
+        </div>
+      </div>
+    </ons-page>
+  </ons-template>
+
   <ons-template id="akusesu.html">
     <ons-page id="akusesu-page">
       <ons-toolbar>
@@ -409,7 +525,7 @@
         <p class="sample"></p>
         <img src ="https://i.ytimg.com/vi/BbrQNjAhVCQ/maxresdefault.jpg"width="100%"height="50%">
         <p class="sample"></p>
-        <div><ons-button large--quiet id="mappu-button"style="width:80%;"><big><big>マップ</big></big></ons-button></div>
+        <div><ons-button large--quiet id="mappu-button"style="width:80%;"><big><big>学校・寮マップ</big></big></ons-button></div>
         <p class="sample"></p>
         <div><ons-button large--quiet id="fune-button"style="width:80%;"><big><big>フェリーの時刻表</big></big></ons-button></div>
         <p class="sample"></p>
